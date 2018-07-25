@@ -80,7 +80,7 @@
                                     <outlet property="delegate" destination="k9c-Xg-9Pm" id="Uem-Rz-lEF"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clA-Xc-Zzs">
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="clA-Xc-Zzs">
                                 <rect key="frame" x="16" y="210" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="aRu-uE-C8O"/>
@@ -88,6 +88,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <connections>
+                                    <outlet property="delegate" destination="k9c-Xg-9Pm" id="GdV-VF-Ms1"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,7 +114,7 @@
                     <connections>
                         <outlet property="btnLogin" destination="zcj-qW-6go" id="AT3-vK-2ei"/>
                         <outlet property="txtAccount" destination="AAV-GJ-wCY" id="PXZ-BE-qd6"/>
-                        <outlet property="txtPassword" destination="clA-Xc-Zzs" id="u7v-yE-ySI"/>
+                        <outlet property="txtPassword" destination="clA-Xc-Zzs" id="vpt-qi-sme"/>
                         <segue destination="3RV-lc-Zw5" kind="show" identifier="moveToMasterviewSegue" id="u79-pi-5ln"/>
                     </connections>
                 </viewController>
