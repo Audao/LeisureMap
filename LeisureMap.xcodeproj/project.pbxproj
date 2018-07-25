@@ -16,6 +16,10 @@
 		AD525BA92105D7CC00112ED5 /* LeisureMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD525BA82105D7CC00112ED5 /* LeisureMapUITests.swift */; };
 		AD525BB82105DB0400112ED5 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD525BB72105DB0400112ED5 /* SplashViewController.swift */; };
 		AD525BBB2105DB5B00112ED5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD525BBA2105DB5B00112ED5 /* LoginViewController.swift */; };
+		ADA8182021085946004F1DFA /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8181F21085946004F1DFA /* MasterViewController.swift */; };
+		ADA8182221085957004F1DFA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8182121085957004F1DFA /* DetailViewController.swift */; };
+		ADA81824210859E0004F1DFA /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81823210859E0004F1DFA /* NoteViewController.swift */; };
+		ADA81826210859ED004F1DFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81825210859ED004F1DFA /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		AD525BB62105D94500112ED5 /* LeisureMap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LeisureMap.entitlements; sourceTree = "<group>"; };
 		AD525BB72105DB0400112ED5 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		AD525BBA2105DB5B00112ED5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ADA8181F21085946004F1DFA /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		ADA8182121085957004F1DFA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		ADA81823210859E0004F1DFA /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		ADA81825210859ED004F1DFA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD3E4DEA2108589400E47C04 /* MasterDetail */ = {
+			isa = PBXGroup;
+			children = (
+				ADA8181F21085946004F1DFA /* MasterViewController.swift */,
+				ADA8182121085957004F1DFA /* DetailViewController.swift */,
+			);
+			path = MasterDetail;
+			sourceTree = "<group>";
+		};
 		AD525B7C2105D7CB00112ED5 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +119,9 @@
 		AD525B872105D7CB00112ED5 /* LeisureMap */ = {
 			isa = PBXGroup;
 			children = (
+				ADA8181E21085926004F1DFA /* NoteFlow */,
+				ADA8181D2108591B004F1DFA /* MapFlow */,
+				AD3E4DEA2108589400E47C04 /* MasterDetail */,
 				AD525BB92105DB4500112ED5 /* LoginFlow */,
 				AD525BB62105D94500112ED5 /* LeisureMap.entitlements */,
 				AD525B882105D7CB00112ED5 /* AppDelegate.swift */,
@@ -139,6 +159,22 @@
 				AD525BBA2105DB5B00112ED5 /* LoginViewController.swift */,
 			);
 			path = LoginFlow;
+			sourceTree = "<group>";
+		};
+		ADA8181D2108591B004F1DFA /* MapFlow */ = {
+			isa = PBXGroup;
+			children = (
+				ADA81825210859ED004F1DFA /* MapViewController.swift */,
+			);
+			path = MapFlow;
+			sourceTree = "<group>";
+		};
+		ADA8181E21085926004F1DFA /* NoteFlow */ = {
+			isa = PBXGroup;
+			children = (
+				ADA81823210859E0004F1DFA /* NoteViewController.swift */,
+			);
+			path = NoteFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,10 +313,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA81824210859E0004F1DFA /* NoteViewController.swift in Sources */,
+				ADA8182021085946004F1DFA /* MasterViewController.swift in Sources */,
 				AD525BBB2105DB5B00112ED5 /* LoginViewController.swift in Sources */,
 				AD525BB82105DB0400112ED5 /* SplashViewController.swift in Sources */,
+				ADA8182221085957004F1DFA /* DetailViewController.swift in Sources */,
 				AD525B8B2105D7CB00112ED5 /* ViewController.swift in Sources */,
 				AD525B892105D7CB00112ED5 /* AppDelegate.swift in Sources */,
+				ADA81826210859ED004F1DFA /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
