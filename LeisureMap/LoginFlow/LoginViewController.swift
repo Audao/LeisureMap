@@ -8,8 +8,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController , UITextFieldDelegate{
-
+class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseDelegaate{
+ 
+    
+    var requestWorker : AsyncRequestWorker?
+    
     @IBOutlet weak var txtAccount: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
@@ -17,20 +20,63 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        requestWorker = AsyncRequestWorker()
+        requestWorker?.responseDelegate = self
+        
+//        let from = "https://score.azurewebsites.net/api/version/\(  String( describing :appVersion) )"
+//
+//
+//        self.requestWorker?.getResponse(from: from, tag: 1)
+        print("viewDidload")
+        
+        
+    }
+    
+    @IBAction func btnLoginClicked(_ sender: Any) {
+        
+        let account = txtAccount.text!
+        let password = txtPassword.text!
+        
+        
+        
+        let from = "https://score.azurewebsites.net/api/login/\(account)/\(password)"
+         self.requestWorker?.getResponse(from: from, tag: 1)
+        
+    }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewDidAppear")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewDidDisappear")
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         //
         
-//        let accept = "abcdeABCDE"
-//        let cs = NSCharacterSet(charactersIn: accept).inverted
-//        //['a','b','c']
-//        let filtered = string.components(separatedBy: cs).joined(separator: "")
-//        //["a","b","c"]
-//        if (string != filtered){
-//            return false
-//        }
+        let accept = "abcdeABCDE"
+        let cs = NSCharacterSet(charactersIn: accept).inverted
+        //['a','b','c']
+        let filtered = string.components(separatedBy: cs).joined(separator: "")
+        //["a","b","c"]
+        if (string != filtered){
+            return false
+        }
         
         
         //Max Length
@@ -62,5 +108,18 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         }
     return true
     }
+    //MARK: AsyncResponseDelegaate
+    
+    func receivedResponse(_ sender: AsyncRequestWorker, responseString: String, tag: Int) {
+        print(responseString)
+        
+
+        
+        DispatchQueue.main.async {
+//        self.performSegue(withIdentifier: "moveToLoginViewSegue", sender: self)
+            
+        }
+    }
+    
 
 }

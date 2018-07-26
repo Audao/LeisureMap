@@ -35,7 +35,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93523102998733521" green="0.89691678767027017" blue="0.42026641270790893" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UHO-pU-UO6" secondAttribute="trailing" constant="16" id="82P-hv-Na9"/>
                             <constraint firstItem="UHO-pU-UO6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Gdh-cT-RwH"/>
@@ -67,7 +67,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="zjJ-Gx-ai0"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="btnLoginClicked:" destination="k9c-Xg-9Pm" eventType="touchUpInside" id="OdA-0e-AdL"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AAV-GJ-wCY">
                                 <rect key="frame" x="16" y="120" width="343" height="30"/>
