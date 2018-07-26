@@ -20,6 +20,7 @@
 		ADA8182221085957004F1DFA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA8182121085957004F1DFA /* DetailViewController.swift */; };
 		ADA81824210859E0004F1DFA /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81823210859E0004F1DFA /* NoteViewController.swift */; };
 		ADA81826210859ED004F1DFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA81825210859ED004F1DFA /* MapViewController.swift */; };
+		ADDC53CA2109617400ECF27E /* NetWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC53C92109617400ECF27E /* NetWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		ADA8182121085957004F1DFA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ADA81823210859E0004F1DFA /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		ADA81825210859ED004F1DFA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		ADDC53C92109617400ECF27E /* NetWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		AD525B872105D7CB00112ED5 /* LeisureMap */ = {
 			isa = PBXGroup;
 			children = (
+				ADDC53C82109613900ECF27E /* Worker */,
 				ADA8181E21085926004F1DFA /* NoteFlow */,
 				ADA8181D2108591B004F1DFA /* MapFlow */,
 				AD3E4DEA2108589400E47C04 /* MasterDetail */,
@@ -175,6 +178,14 @@
 				ADA81823210859E0004F1DFA /* NoteViewController.swift */,
 			);
 			path = NoteFlow;
+			sourceTree = "<group>";
+		};
+		ADDC53C82109613900ECF27E /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				ADDC53C92109617400ECF27E /* NetWorker.swift */,
+			);
+			path = Worker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +332,7 @@
 				AD525B8B2105D7CB00112ED5 /* ViewController.swift in Sources */,
 				AD525B892105D7CB00112ED5 /* AppDelegate.swift in Sources */,
 				ADA81826210859ED004F1DFA /* MapViewController.swift in Sources */,
+				ADDC53CA2109617400ECF27E /* NetWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
