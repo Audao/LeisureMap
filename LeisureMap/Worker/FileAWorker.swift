@@ -10,7 +10,7 @@ import Foundation
 
 protocol FlieWorkerDelegate {
     func fileWorkWriteCompleted(_ sender:FileWorker,fileName : String, tag : Int)
-    func fileWorkReadCompleted(_ sender:FileWorker,fileName : String, tag : Int)
+    func fileWorkReadCompleted(_ sender:FileWorker,content : String, tag : Int)
 }
 
 class FileWorker  {
@@ -35,8 +35,22 @@ class FileWorker  {
     func readFromFile(content : String , fileName : String, tag : Int)  ->String {
         var result : String = ""
         
-        return  result
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            
+            let fileURL = dir.appendingPathComponent(fileName)
+            
+            do{
+                let content = try  String(contentsOf: fileURL , encoding:  .utf8)
+                
+                self.FlieWorkerDelegate?.fileWorkReadCompleted(self, content: content, tag: tag)
+                
+                result = content
+            }
+            catch{print(error) }
+            
+        }
+        
+            return  result
         
     }
-    
 }

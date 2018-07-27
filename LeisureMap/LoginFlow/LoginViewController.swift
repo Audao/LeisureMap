@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseDelegaate{
+class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseDelegaate,FlieWorkerDelegate{
+    func fileWorkWriteCompleted(_ sender: FileWorker, fileName: String, tag: Int) {
+        
+    }
+    
+    func fileWorkReadCompleted(_ sender: FileWorker, content: String, tag: Int) {
+        
+    }
+    
  
     
     var requestWorker : AsyncRequestWorker?
@@ -24,7 +33,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
         requestWorker = AsyncRequestWorker()
         requestWorker?.responseDelegate = self
         
-//        let from = "https://score.azurewebsites.net/api/version/\(  String( describing :appVersion) )"
+//        let from = "https://score.azurewebsites.net/api/version/(  String( describing :appVersion) )"
 //
 //
 //        self.requestWorker?.getResponse(from: from, tag: 1)
@@ -33,37 +42,25 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
         
     }
     
-    @IBAction func btnLoginClicked(_ sender: Any) {
-        
-        let account = txtAccount.text!
-        let password = txtPassword.text!
-        
-        
-        
-        let from = "https://score.azurewebsites.net/api/login/\(account)/\(password)"
-         self.requestWorker?.getResponse(from: from, tag: 1)
-        
-    }
+   
     
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppear")
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewDidAppear")
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillDisappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewDidDisappear")
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print("viewWillAppear")
+//    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print("viewDidAppear")
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print("viewWillDisappear")
+//    }
+//
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print("viewDidDisappear")
+//    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -110,15 +107,106 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
     }
     //MARK: AsyncResponseDelegaate
     
+    @IBAction func btnLoginClicked(_ sender: Any) {
+        
+        let account = txtAccount.text!
+        let password = txtPassword.text!
+        
+        let from = "https://score.azurewebsites.net/api/login/\(account)/\(password)"
+        self.requestWorker?.getResponse(from: from, tag: 1)
+        
+    }
+    
+    func readServieCategory() {
+        let from = "https://score.azurewebsites.net/api/ServiceCategory"
+        self.requestWorker?.getResponse(from: from, tag: 2)
+    }
+    
+    func readStore() {
+        let from = "https://score.azurewebsites.net/api/Store"
+        self.requestWorker?.getResponse(from: from, tag: 3)
+    }
+    
     func receivedResponse(_ sender: AsyncRequestWorker, responseString: String, tag: Int) {
-        print(responseString)
+        
+       // print("\( tag ):\(responseString)")
+        
+        switch tag {
+            
+        case 1:
+            //login
+            self.readServieCategory()
+            break
+        case 2:
+           
+            //ServiceCategory
+            
+            do{
+                if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
+                    
+                    let json = try JSON(data: dataFromString)
+                    
+                    for (index,subJson):(String, JSON) in json {
+                       
+                        let index : Int = subJson["index"].intValue
+                        let name : String  = subJson["name"].stringValue
+                        let imagePath : String  = subJson["imagePath"].stringValue
+                        
+                        print("\( index )\( name )")
+
+                        
+                    }
+                }
+            }catch{
+                print(error)
+            }
+            
+            
+            self.readStore()
+            break
+        case 3:
+           //
+           
+            do{
+                if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
+                    
+                    let json = try JSON(data: dataFromString)
+                    
+                    for (_,subJson):(String, JSON) in json {
+                        
+                        let ServiceIndex : Int = subJson["serviceIndex"].intValue
+                        let name : String  = subJson["name"].stringValue
+                        let index : Int = subJson["index"].intValue
+                        let imagePath : String  = subJson["imagePath"].stringValue
+                        
+                        let location : JSON  = subJson["location"]
+                        let latitude : Double =  location["latitude"].doubleValue
+                        let longitude : Double = location["longitude"].doubleValue
+                        print("\( index ):\( name ):latitude:\( latitude )")
+                        
+                        
+                    }
+                }
+            }catch{
+                print(error)
+            }
+            
+            
+            
+            
+            //Store
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "moveToMasterviewSegue", sender: self)
+            }
+            break
+        default:
+            break
+        }
         
 
         
-        DispatchQueue.main.async {
-//        self.performSegue(withIdentifier: "moveToLoginViewSegue", sender: self)
-            
-        }
+        
+        
     }
     
 
