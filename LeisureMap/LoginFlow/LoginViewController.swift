@@ -10,21 +10,22 @@ import UIKit
 import SwiftyJSON
 
 class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseDelegaate,FlieWorkerDelegate{
-    func fileWorkWriteCompleted(_ sender: FileWorker, fileName: String, tag: Int) {
-        
-    }
     
-    func fileWorkReadCompleted(_ sender: FileWorker, content: String, tag: Int) {
-        
-    }
+  
+
     
- 
+    
+
     
     var requestWorker : AsyncRequestWorker?
+    var fileWorker : FileWorker?
+    let storeFileName : String = "store.json"
     
     @IBOutlet weak var txtAccount: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
+    
+    //MARK: - View's Event
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,11 +33,17 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
         
         requestWorker = AsyncRequestWorker()
         requestWorker?.responseDelegate = self
+        fileWorker = FileWorker()
+        fileWorker?.FlieWorkerDelegate = self
+        
+
         
 //        let from = "https://score.azurewebsites.net/api/version/(  String( describing :appVersion) )"
 //
 //
 //        self.requestWorker?.getResponse(from: from, tag: 1)
+        
+        
         print("viewDidload")
         
         
@@ -44,24 +51,25 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
     
    
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        print("viewWillAppear")
-//    }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        print("viewDidAppear")
-//    }
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        print("viewWillDisappear")
-//    }
-//
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        print("viewDidDisappear")
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewDidAppear")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillDisappear")
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewDidDisappear")
+    }
     
+    //MARK: -UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         //
@@ -105,7 +113,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
         }
     return true
     }
-    //MARK: AsyncResponseDelegaate
+    //MARK: -AsyncResponseDelegaate
     
     @IBAction func btnLoginClicked(_ sender: Any) {
         
@@ -143,71 +151,86 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
             
             do{
                 if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
-                    
+
                     let json = try JSON(data: dataFromString)
-                    
-                    for (index,subJson):(String, JSON) in json {
-                       
-                        let index : Int = subJson["index"].intValue
+
+                    let sqliteContext = SQLiteWorker()
+
+                    sqliteContext.createDatabase()
+
+                    sqliteContext.clearAll()
+
+
+
+                    for (_,subJson):(String, JSON) in json {
+
+
                         let name : String  = subJson["name"].stringValue
                         let imagePath : String  = subJson["imagePath"].stringValue
-                        
-                        print("\( index )\( name )")
 
-                        
+                        sqliteContext.insertData(_name: name, _imagepath: imagePath)
+
+
                     }
+                    let categories = sqliteContext.readData()
+                    print(categories)
                 }
             }catch{
                 print(error)
             }
-            
+
             
             self.readStore()
             break
         case 3:
            //
            
-            do{
-                if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
-                    
-                    let json = try JSON(data: dataFromString)
-                    
-                    for (_,subJson):(String, JSON) in json {
-                        
-                        let ServiceIndex : Int = subJson["serviceIndex"].intValue
-                        let name : String  = subJson["name"].stringValue
-                        let index : Int = subJson["index"].intValue
-                        let imagePath : String  = subJson["imagePath"].stringValue
-                        
-                        let location : JSON  = subJson["location"]
-                        let latitude : Double =  location["latitude"].doubleValue
-                        let longitude : Double = location["longitude"].doubleValue
-                        print("\( index ):\( name ):latitude:\( latitude )")
-                        
-                        
-                    }
-                }
-            }catch{
-                print(error)
-            }
+//            do{
+//                if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
+//
+//                    let json = try JSON(data: dataFromString)
+//
+//                    for (_,subJson):(String, JSON) in json {
+//
+//                        let ServiceIndex : Int = subJson["serviceIndex"].intValue
+//                        let name : String  = subJson["name"].stringValue
+//                        let index : Int = subJson["index"].intValue
+//                        let imagePath : String  = subJson["imagePath"].stringValue
+//
+//                        let location : JSON  = subJson["location"]
+//                        let latitude : Double =  location["latitude"].doubleValue
+//                        let longitude : Double = location["longitude"].doubleValue
+//                        print("\( index ):\( name ):latitude:\( latitude )")
+//
+//
+//                    }
+//                }
+//            }catch{
+//                print(error)
+//            }
             
-            
+            self.fileWorker?.writeToFile(content: responseString, fileName: storeFileName, tag: 1)
             
             
             //Store
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "moveToMasterviewSegue", sender: self)
-            }
+           
             break
         default:
             break
         }
         
-
-        
-        
-        
     }
     
+    //MARK : -FileWorkerDelegate
+    func fileWorkWriteCompleted(_ sender: FileWorker, fileName: String, tag: Int) {
+        print(fileName)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "moveToMasterviewSegue", sender: self)
+        }
+    }
+    
+    func fileWorkReadCompleted(_ sender: FileWorker, content: String, tag: Int) {
+        
+    }
 
 }
