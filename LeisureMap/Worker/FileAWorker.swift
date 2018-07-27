@@ -32,7 +32,7 @@ class FileWorker  {
         }
         
     }
-    func readFromFile(content : String , fileName : String, tag : Int)  ->String {
+    func readFromFile( fileName : String, tag : Int)  ->String {
         var result : String = ""
         
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{

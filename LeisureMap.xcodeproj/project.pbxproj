@@ -13,6 +13,8 @@
 		AD278AB6210AAA82000CE6C5 /* SeviceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD278AB5210AAA82000CE6C5 /* SeviceCategory.swift */; };
 		AD278AB8210AAB64000CE6C5 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD278AB7210AAB64000CE6C5 /* Store.swift */; };
 		AD278ABC210ABEE1000CE6C5 /* SQLiteWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD278ABB210ABEE1000CE6C5 /* SQLiteWorker.swift */; };
+		AD278ABF210AFFC6000CE6C5 /* ServiceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD278ABE210AFFC6000CE6C5 /* ServiceCellView.swift */; };
+		AD278AC1210B0902000CE6C5 /* StoreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD278AC0210B0902000CE6C5 /* StoreCellView.swift */; };
 		AD525B892105D7CB00112ED5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD525B882105D7CB00112ED5 /* AppDelegate.swift */; };
 		AD525B8B2105D7CB00112ED5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD525B8A2105D7CB00112ED5 /* ViewController.swift */; };
 		AD525B8E2105D7CB00112ED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD525B8C2105D7CB00112ED5 /* Main.storyboard */; };
@@ -57,6 +59,8 @@
 		AD278AB5210AAA82000CE6C5 /* SeviceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeviceCategory.swift; sourceTree = "<group>"; };
 		AD278AB7210AAB64000CE6C5 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		AD278ABB210ABEE1000CE6C5 /* SQLiteWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteWorker.swift; sourceTree = "<group>"; };
+		AD278ABE210AFFC6000CE6C5 /* ServiceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCellView.swift; sourceTree = "<group>"; };
+		AD278AC0210B0902000CE6C5 /* StoreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCellView.swift; sourceTree = "<group>"; };
 		AD525B852105D7CB00112ED5 /* LeisureMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeisureMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD525B882105D7CB00112ED5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD525B8A2105D7CB00112ED5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,9 +138,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AD278ABD210AFF2C000CE6C5 /* CellView */ = {
+			isa = PBXGroup;
+			children = (
+				AD278ABE210AFFC6000CE6C5 /* ServiceCellView.swift */,
+				AD278AC0210B0902000CE6C5 /* StoreCellView.swift */,
+			);
+			path = CellView;
+			sourceTree = "<group>";
+		};
 		AD3E4DEA2108589400E47C04 /* MasterDetail */ = {
 			isa = PBXGroup;
 			children = (
+				AD278ABD210AFF2C000CE6C5 /* CellView */,
 				ADA8181F21085946004F1DFA /* MasterViewController.swift */,
 				ADA8182121085957004F1DFA /* DetailViewController.swift */,
 			);
@@ -470,6 +484,7 @@
 				ADA8182021085946004F1DFA /* MasterViewController.swift in Sources */,
 				AD278AB8210AAB64000CE6C5 /* Store.swift in Sources */,
 				AD525BBB2105DB5B00112ED5 /* LoginViewController.swift in Sources */,
+				AD278AC1210B0902000CE6C5 /* StoreCellView.swift in Sources */,
 				AD278ABC210ABEE1000CE6C5 /* SQLiteWorker.swift in Sources */,
 				AD525BB82105DB0400112ED5 /* SplashViewController.swift in Sources */,
 				AD278AB6210AAA82000CE6C5 /* SeviceCategory.swift in Sources */,
@@ -477,6 +492,7 @@
 				AD525B8B2105D7CB00112ED5 /* ViewController.swift in Sources */,
 				AD525B892105D7CB00112ED5 /* AppDelegate.swift in Sources */,
 				ADA81826210859ED004F1DFA /* MapViewController.swift in Sources */,
+				AD278ABF210AFFC6000CE6C5 /* ServiceCellView.swift in Sources */,
 				ADDC53CA2109617400ECF27E /* NetWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

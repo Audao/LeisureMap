@@ -11,12 +11,6 @@ import SwiftyJSON
 
 class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseDelegaate,FlieWorkerDelegate{
     
-  
-
-    
-    
-
-    
     var requestWorker : AsyncRequestWorker?
     var fileWorker : FileWorker?
     let storeFileName : String = "store.json"
@@ -28,6 +22,9 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
     //MARK: - View's Event
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+
 
         // Do any additional setup after loading the view.
         
@@ -38,10 +35,10 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
         
 
         
-//        let from = "https://score.azurewebsites.net/api/version/(  String( describing :appVersion) )"
+//      let from = "https://score.azurewebsites.net/api/version/(  String( describing :appVersion) )"
 //
 //
-//        self.requestWorker?.getResponse(from: from, tag: 1)
+//      self.requestWorker?.getResponse(from: from, tag: 1)
         
         
         print("viewDidload")
@@ -185,29 +182,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate,AsyncResponseD
         case 3:
            //
            
-//            do{
-//                if let dataFromString = responseString.data(using: .utf8, allowLossyConversion: false) {
-//
-//                    let json = try JSON(data: dataFromString)
-//
-//                    for (_,subJson):(String, JSON) in json {
-//
-//                        let ServiceIndex : Int = subJson["serviceIndex"].intValue
-//                        let name : String  = subJson["name"].stringValue
-//                        let index : Int = subJson["index"].intValue
-//                        let imagePath : String  = subJson["imagePath"].stringValue
-//
-//                        let location : JSON  = subJson["location"]
-//                        let latitude : Double =  location["latitude"].doubleValue
-//                        let longitude : Double = location["longitude"].doubleValue
-//                        print("\( index ):\( name ):latitude:\( latitude )")
-//
-//
-//                    }
-//                }
-//            }catch{
-//                print(error)
-//            }
+
             
             self.fileWorker?.writeToFile(content: responseString, fileName: storeFileName, tag: 1)
             
