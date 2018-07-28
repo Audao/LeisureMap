@@ -266,11 +266,12 @@
             <objects>
                 <viewController id="gq8-mv-dRZ" customClass="NoteViewController" customModule="LeisureMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JxS-66-MlO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ank-lf-87u"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DlW-pr-dcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -281,11 +282,29 @@
             <objects>
                 <viewController id="3wO-gi-87T" customClass="MapViewController" customModule="LeisureMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="058-7q-aoE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UcN-m2-mWY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3wO-gi-87T" id="hEH-54-WZL"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UcN-m2-mWY" firstAttribute="top" secondItem="ajo-0x-N67" secondAttribute="top" id="AO5-Dh-dfz"/>
+                            <constraint firstItem="UcN-m2-mWY" firstAttribute="bottom" secondItem="ajo-0x-N67" secondAttribute="bottom" id="DDS-1P-bUd"/>
+                            <constraint firstItem="UcN-m2-mWY" firstAttribute="leading" secondItem="ajo-0x-N67" secondAttribute="leading" id="Otw-2K-n61"/>
+                            <constraint firstItem="UcN-m2-mWY" firstAttribute="trailing" secondItem="ajo-0x-N67" secondAttribute="trailing" id="n8J-xd-sxZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ajo-0x-N67"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="mapView" destination="UcN-m2-mWY" id="kZ7-fl-ERc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jgm-1v-CEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -298,6 +317,24 @@
                     <view key="view" contentMode="scaleToFill" id="jzg-UO-DP5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-yq-G6t">
+                                <rect key="frame" x="16" y="142" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Map"/>
+                                <connections>
+                                    <action selector="btnMapClicked:" destination="3nU-pw-ALW" eventType="touchUpInside" id="GP6-zh-IY8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agy-y2-sBh">
+                                <rect key="frame" x="16" y="218" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Web"/>
+                                <connections>
+                                    <action selector="btnwebClicked:" destination="3nU-pw-ALW" eventType="touchUpInside" id="WCs-Gs-JSu"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="q79-DN-MBW"/>
                     </view>

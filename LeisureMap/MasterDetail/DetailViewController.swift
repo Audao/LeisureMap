@@ -21,14 +21,38 @@ class DetailViewController: UIViewController {
     }
     
 
-    /*
+    @IBAction func btnMapClicked(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "moveToMapViewSegue", sender: self)
+        }
+        
+    }
+    
+    
+    @IBAction func btnwebClicked(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "moveToNoteViewSegue", sender: self)
+        }
+        
+    }
+    
+    
+    
+  
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func  prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "moveToMapViewSegue":
+            
+            break
+        case "moveToNoteViewSegue":
+            
+            break
+            
+        default:
+            break
+        }
     }
-    */
 
 }
