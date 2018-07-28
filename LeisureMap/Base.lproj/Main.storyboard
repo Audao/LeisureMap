@@ -154,7 +154,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hd8-A1-Jw5">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hd8-A1-Jw5">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SK-lk-NMO">
@@ -232,6 +232,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4Cj-Nx-acu" id="zBu-i4-f3J"/>
+                                    <outlet property="delegate" destination="4Cj-Nx-acu" id="dGo-It-6Pr"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -324,4 +328,7 @@
             <point key="canvasLocation" x="1590" y="34"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder" width="256" height="256"/>
+    </resources>
 </document>
