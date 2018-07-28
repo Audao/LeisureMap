@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class MasterViewController: UIViewController, FlieWorkerDelegate, UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource{
     
+    @IBOutlet weak var storeTable: UITableView!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayStores.count
 
@@ -28,6 +29,17 @@ class MasterViewController: UIViewController, FlieWorkerDelegate, UICollectionVi
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+         let store = displayStores[indexPath.row]
+         self.selectedStore = store
+        DispatchQueue.main.async {
+           self.performSegue(withIdentifier: "moveToDetailViewSegue", sender: self)
+        }
+        
+        
+    }
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
@@ -46,7 +58,22 @@ class MasterViewController: UIViewController, FlieWorkerDelegate, UICollectionVi
         
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let category = categories[indexPath.row]
+        displayStores.removeAll()
+        for store   in stores {
+            let idx : Int = category.Index - 1
+            if(store.ServiceIndex == idx){
+                displayStores.append(store)
+            }
+            DispatchQueue.main.async {
+                self.storeTable.reloadData()
+            }
+        }
+
+    }
     
     var stores : [Store] = []
     var categories : [ServiceCategory] = []
@@ -121,6 +148,20 @@ class MasterViewController: UIViewController, FlieWorkerDelegate, UICollectionVi
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "moveToDetailViewSegue":
+            
+            let viewController = segue.destination as! DetailViewController
+            viewController.selectdStore = self.selectedStore
+            
+            
+            break
+        default:
+            break
+        }
+    }
     //MARK: -FileWorkerDelegate
     func fileWorkWriteCompleted(_ sender: FileWorker, fileName: String, tag: Int) {
         
