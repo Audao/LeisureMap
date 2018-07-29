@@ -157,7 +157,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hd8-A1-Jw5">
                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SK-lk-NMO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SK-lk-NMO">
                                                     <rect key="frame" x="0.0" y="59" width="90" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="a3U-Hp-Wj9"/>
@@ -208,7 +208,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SNZ-Tm-brg">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikP-Pf-SJd">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikP-Pf-SJd">
                                                     <rect key="frame" x="15" y="29.5" width="345" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -268,7 +268,21 @@
                     <view key="view" contentMode="scaleToFill" id="JxS-66-MlO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXU-Th-r5y">
+                                <rect key="frame" x="16" y="80" width="343" height="30"/>
+                                <state key="normal" title="Photo"/>
+                                <connections>
+                                    <action selector="btnPhotoClicked:" destination="gq8-mv-dRZ" eventType="touchUpInside" id="Wm8-T7-JoR"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tXU-Th-r5y" firstAttribute="leading" secondItem="ank-lf-87u" secondAttribute="leading" constant="16" id="4GX-TT-yl4"/>
+                            <constraint firstItem="tXU-Th-r5y" firstAttribute="top" secondItem="ank-lf-87u" secondAttribute="top" constant="80" id="ElP-Kq-aAb"/>
+                            <constraint firstItem="ank-lf-87u" firstAttribute="trailing" secondItem="tXU-Th-r5y" secondAttribute="trailing" constant="16" id="bJ3-fe-9fX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ank-lf-87u"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -304,11 +318,46 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="mapView" destination="UcN-m2-mWY" id="kZ7-fl-ERc"/>
+                        <segue destination="hG7-F6-xXg" kind="show" identifier="moveTo" id="LFZ-fP-KCC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jgm-1v-CEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4556" y="-355.7721139430285"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="7Tc-eK-uDm">
+            <objects>
+                <viewController id="hG7-F6-xXg" customClass="WebViewController" customModule="LeisureMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PF7-Bh-4Da">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haS-Y6-JeY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="haS-Y6-JeY" firstAttribute="top" secondItem="h7a-bO-NQI" secondAttribute="top" id="5Ge-6N-Wbr"/>
+                            <constraint firstItem="haS-Y6-JeY" firstAttribute="leading" secondItem="h7a-bO-NQI" secondAttribute="leading" id="8pl-Wt-xym"/>
+                            <constraint firstItem="haS-Y6-JeY" firstAttribute="trailing" secondItem="h7a-bO-NQI" secondAttribute="trailing" id="QzK-HA-lx0"/>
+                            <constraint firstItem="haS-Y6-JeY" firstAttribute="bottom" secondItem="h7a-bO-NQI" secondAttribute="bottom" id="gwM-jj-krw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h7a-bO-NQI"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="haS-Y6-JeY" id="Zju-fR-LD6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bY-kj-eBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5526" y="-356"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="8W4-w6-lGh">

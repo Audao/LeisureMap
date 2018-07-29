@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Service"; ObjectID = "6SK-lk-NMO"; */
+"6SK-lk-NMO.text" = "供应商";
+
+/* Class = "UIButton"; normalTitle = "Map"; ObjectID = "GLP-yq-G6t"; */
+"GLP-yq-G6t.normalTitle" = "地图";
+
+/* Class = "UILabel"; text = "version"; ObjectID = "UHO-pU-UO6"; */
+"UHO-pU-UO6.text" = "版本";
+
+/* Class = "UIButton"; normalTitle = "Web"; ObjectID = "agy-y2-sBh"; */
+"agy-y2-sBh.normalTitle" = "Web";
+
+/* Class = "UILabel"; text = "Store Name"; ObjectID = "ikP-Pf-SJd"; */
+"ikP-Pf-SJd.text" = "商店名称";
+
+/* Class = "UIButton"; normalTitle = "Photo"; ObjectID = "tXU-Th-r5y"; */
+"tXU-Th-r5y.normalTitle" = "图片";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "zcj-qW-6go"; */
+"zcj-qW-6go.normalTitle" = "登录";
